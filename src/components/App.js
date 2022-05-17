@@ -1,11 +1,16 @@
-import React from 'react';
+import React,{useReducer,useState} from 'react';
+import reducer from "../reducers/index"
 
 import './App.css';
 
 import TotalDisplay from './TotalDisplay';
 import CalcButton from './CalcButton';
 
+console.log(initialState)
+
+
 function App() {
+  const[state, dispatch]= useReducer(reducer,initialState)
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-dark">
@@ -18,8 +23,8 @@ function App() {
             
             <TotalDisplay value={0}/>
             <div className="row details">
-              <span id="operation"><b>Operation:</b> X</span>
-              <span id="memory"><b>Memory:</b> 0</span>
+              <span id="operation"><b>Operation:</b> state.operation</span>
+              <span id="memory"><b>Memory:</b> state.total</span>
             </div>
             
             <div className="row">
